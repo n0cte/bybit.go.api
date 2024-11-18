@@ -1,11 +1,11 @@
-package bybit_connector
+package bybit
 
 import (
 	"context"
 	"fmt"
 	"net/http"
 
-	"github.com/wuhewuhe/bybit.go.api/models"
+	"github.com/bybit-exchange/bybit.go.api/models"
 )
 
 func (s *BybitClientRequest) GetServerTime(ctx context.Context, opts ...RequestOption) (res *ServerResponse, err error) {

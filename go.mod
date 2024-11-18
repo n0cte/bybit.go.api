@@ -1,6 +1,6 @@
-module github.com/wuhewuhe/bybit.go.api
+module github.com/bybit-exchange/bybit.go.api
 
-go 1.21
+go 1.22
 
 require (
 	github.com/bitly/go-simplejson v0.5.1

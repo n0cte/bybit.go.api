@@ -1,10 +1,11 @@
-package bybit_connector
+package bybit
 
 import (
 	"context"
 	"errors"
-	"github.com/wuhewuhe/bybit.go.api/handlers"
 	"net/http"
+
+	"github.com/bybit-exchange/bybit.go.api/handlers"
 )
 
 func (s *BybitClientRequest) GetSpotMarginData(ctx context.Context, opts ...RequestOption) (res *ServerResponse, err error) {

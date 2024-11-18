@@ -1,4 +1,4 @@
-package bybit_connector
+package bybit
 
 const (
 	Name    = "bybit.api.go"
