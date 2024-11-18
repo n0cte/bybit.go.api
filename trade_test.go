@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func ExamplePlaceBatchTrade() {
+func ExampleBybitClientRequest_PlaceBatchOrder() {
 	client := NewBybitHttpClient("8wYkmpLsMg10eNQyPm", "Ouxc34myDnXvei54XsBZgoQzfGxO4bkr2Zsj", WithBaseURL(TESTNET))
 	params := map[string]interface{}{"category": "option",
 		"request": []map[string]interface{}{
@@ -46,7 +46,7 @@ func ExamplePlaceBatchTrade() {
 	fmt.Println(PrettyPrint(orderResult))
 }
 
-func ExamplePlaceOrder() {
+func ExamplOrder_Do() {
 	client := NewBybitHttpClient("d08Wh6P037IXAvcrL2", "gLfd1BLGU9oq6YoRZRlwXkIQRYB4n5KvXDvv", WithBaseURL(TESTNET), WithDebug(true))
 	orderResult, err := client.NewPlaceOrderService("linear", "XRPUSDT", "Buy", "Market", "15").Do(context.Background())
 	if err != nil {
@@ -56,7 +56,7 @@ func ExamplePlaceOrder() {
 	fmt.Println(PrettyPrint(orderResult))
 }
 
-func ExamplePlaceOrderMap() {
+func ExampleBybitClientRequest_PlaceOrder() {
 	client := NewBybitHttpClient("xxxx", "xxx", WithBaseURL(TESTNET))
 	params := map[string]interface{}{
 		"category":    "linear",
@@ -76,7 +76,7 @@ func ExamplePlaceOrderMap() {
 	fmt.Println(PrettyPrint(orderResult))
 }
 
-func ExampleRequestTestFund() {
+func ExampleBybitClientRequest_RequestTestFund() {
 	client := NewBybitHttpClient("xxxx", "xxx", WithBaseURL(DEMO_ENV))
 	params := map[string]interface{}{
 		"adjustType": 0,

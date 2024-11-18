@@ -2,7 +2,7 @@ package bybit
 
 import "fmt"
 
-func ExampleSendSubscription() {
+func ExampleWebSocket_SendSubscription() {
 	ws := NewBybitPrivateWebSocket("wss://stream-testnet.bybit.com/v5/private", "d08Wh6P037IXAvcrL2", "gLfd1BLGU9oq6YoRZRlwXkIQRYB4n5KvXDvv", func(message string) error {
 		fmt.Println("Received:", message)
 		return nil
@@ -11,7 +11,7 @@ func ExampleSendSubscription() {
 	select {}
 }
 
-func ExampleSendSubscriptionToChannel() {
+func ExampleWebSocket_SendSubscription_to_channel() {
 	ws := NewBybitPublicWebSocket("wss://stream.bybit.com/v5/public/spot", func(message string) error {
 		fmt.Println("Received:", message)
 		return nil

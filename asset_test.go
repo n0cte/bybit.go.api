@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func ExampleGetCoinInfo() {
+func ExampleBybitClientRequest_GetCoinInfo() {
 	client := NewBybitHttpClient("d08Wh6P037IXAvcrL2", "gLfd1BLGU9oq6YoRZRlwXkIQRYB4n5KvXDvv", WithBaseURL(TESTNET))
 	params := map[string]interface{}{"coin": "USDT"}
 	assetResult, err := client.NewUtaBybitServiceWithParams(params).GetCoinInfo(context.Background())
@@ -16,7 +16,7 @@ func ExampleGetCoinInfo() {
 	fmt.Println(PrettyPrint(assetResult))
 }
 
-func ExampleGetTransferableCoin() {
+func ExampleBybitClientRequest_GetTransferableCoin() {
 	client := NewBybitHttpClient("d08Wh6P037IXAvcrL2", "gLfd1BLGU9oq6YoRZRlwXkIQRYB4n5KvXDvv", WithBaseURL(TESTNET))
 	params := map[string]interface{}{"fromAccountType": "UNIFIED", "toAccountType": "CONTRACT"}
 	response, err := client.NewUtaBybitServiceWithParams(params).GetTransferableCoin(context.Background())
