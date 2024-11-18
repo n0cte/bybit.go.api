@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 type secType int
@@ -55,7 +57,7 @@ func (r *request) setParams(m params) *request {
 			r.setParam(k, v)
 		}
 	} else if r.method == http.MethodPost {
-		jsonData, err := json.Marshal(m)
+		jsonData, err := jsoniter.Marshal(m)
 		if err != nil {
 			log.Fatal(err)
 		}

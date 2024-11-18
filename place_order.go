@@ -3,6 +3,8 @@ package bybit
 import (
 	"context"
 	"net/http"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 type Order struct {
@@ -237,7 +239,7 @@ func (order *Order) Do(ctx context.Context, opts ...RequestOption) (res *ServerR
 		return nil, err
 	}
 	res = new(ServerResponse)
-	err = json.Unmarshal(data, res)
+	err = jsoniter.Unmarshal(data, res)
 	if err != nil {
 		return nil, err
 	}

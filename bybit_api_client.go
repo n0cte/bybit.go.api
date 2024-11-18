@@ -21,8 +21,6 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
-
 type BybitClientRequest struct {
 	c      *Client
 	params map[string]interface{}
@@ -48,7 +46,7 @@ func GetServerResponse(err error, data []byte) (*ServerResponse, error) {
 		return nil, err
 	}
 	resp := new(ServerResponse)
-	err = json.Unmarshal(data, resp)
+	err = jsoniter.Unmarshal(data, resp)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +58,7 @@ func GetBatchOrderServerResponse(err error, data []byte) (*models.BatchOrderServ
 		return nil, err
 	}
 	resp := new(models.BatchOrderServerResponse)
-	err = json.Unmarshal(data, resp)
+	err = jsoniter.Unmarshal(data, resp)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +103,7 @@ func WithProxyURL(proxyURL string) ClientOption {
 }
 
 func PrettyPrint(i interface{}) string {
-	s, _ := json.MarshalIndent(i, "", " ")
+	s, _ := jsoniter.MarshalIndent(i, "", " ")
 	return string(s)
 }
 
@@ -259,7 +257,7 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 		var (
 			apiErr = new(handlers.APIError)
 		)
-		e := json.Unmarshal(data, apiErr)
+		e := jsoniter.Unmarshal(data, apiErr)
 		if e != nil {
 			c.debug("failed to unmarshal json: %s", e)
 		}

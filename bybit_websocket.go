@@ -10,6 +10,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
+	jsoniter "github.com/json-iterator/go"
 )
 
 type MessageHandler func(message string) error
@@ -190,7 +191,7 @@ func ping(b *WebSocket) {
 				"op":     "ping",
 				"req_id": fmt.Sprintf("%d", currentTime),
 			}
-			jsonPingMessage, err := json.Marshal(pingMessage)
+			jsonPingMessage, err := jsoniter.Marshal(pingMessage)
 			if err != nil {
 				fmt.Println("Failed to marshal ping message:", err)
 				continue
@@ -247,7 +248,7 @@ func (b *WebSocket) sendAuth() error {
 }
 
 func (b *WebSocket) sendAsJson(v interface{}) error {
-	data, err := json.Marshal(v)
+	data, err := jsoniter.Marshal(v)
 	if err != nil {
 		return err
 	}

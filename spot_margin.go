@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/bybit-exchange/bybit.go.api/handlers"
+	jsoniter "github.com/json-iterator/go"
 )
 
 func (s *BybitClientRequest) GetSpotMarginData(ctx context.Context, opts ...RequestOption) (res *ServerResponse, err error) {
@@ -65,7 +66,7 @@ func (s *BybitClientRequest) SetSpotMarginLeverage(ctx context.Context, opts ...
 		return nil, err
 	}
 	res = new(ServerResponse)
-	err = json.Unmarshal(data, res)
+	err = jsoniter.Unmarshal(data, res)
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +91,7 @@ func (s *BybitClientRequest) GetSpotMarginState(ctx context.Context, opts ...Req
 		return nil, err
 	}
 	res = new(ServerResponse)
-	err = json.Unmarshal(data, res)
+	err = jsoniter.Unmarshal(data, res)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +119,7 @@ func (s *BybitClientRequest) ToggleSpotMarginTrade(ctx context.Context, opts ...
 		return nil, err
 	}
 	res = new(ServerResponse)
-	err = json.Unmarshal(data, res)
+	err = jsoniter.Unmarshal(data, res)
 	if err != nil {
 		return nil, err
 	}
